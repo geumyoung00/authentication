@@ -1,0 +1,19 @@
+{
+  "events": [
+    {
+      "title": "[도쿄] 팀랩 플래닛 방문",
+      "image": "https://image.kkday.com/v2/image/get/s1.kkday.com/product_22396/20210630091546_4V2Zz/jpg",
+      "date": "2023-11-17",
+      "description": "팀랩이 만든 독특한 디지털 아트 전시로 놀라운 감각의 세계에 푹 빠져보세요. 예술이 전통적인 경계를 넘어 몸 전체를 감싸는 신비로운 경험을 할 수 있습니다.",
+      "id": "2a42fcc4-ea21-4bdd-abf6-c40006dc66a9"
+    },
+    {
+      "title": "[도쿄] 디즈니 랜드",
+      "image": "https://t1.daumcdn.net/cfile/tistory/9993464B5EC759D015",
+      "date": "2023-11-18",
+      "description": "디즈니랜드는 퍼레이드 위주의 아기자기한 동심의 세계이고, 디즈니 씨는 스릴 넘치는 어트랙션 위주로 이루어져 있어요.",
+      "id": "4z67vxe4-ea21-4bdd-abf6-c40006dc66a0"
+    }
+  ],
+  "users": []
+}
