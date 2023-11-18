@@ -38,6 +38,16 @@ function MainNavigation() {
               구독
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/auth"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+            >
+              로그인
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>
