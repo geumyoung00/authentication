@@ -1,14 +1,19 @@
-import { useState } from 'react';
-import { Form } from 'react-router-dom';
+import { Form, useSearchParams } from 'react-router-dom';
 
 import classes from './AuthForm.module.css';
 
 function AuthForm() {
-  const [isLogin, setIsLogin] = useState(true);
+  const [loginPrams] = useSearchParams();
+  const mode = loginPrams.get('mode');
 
-  function switchAuthHandler() {
-    setIsLogin((isCurrentlyLogin) => !isCurrentlyLogin);
-  }
+  const isLogin = mode === 'login';
+  console.log('isLogin__', isLogin);
+
+  // const [isLogin, setIsLogin] = useState(true);
+
+  // function switchAuthHandler() {
+  //   setIsLogin((isCurrentlyLogin) => !isCurrentlyLogin);
+  // }
 
   return (
     <>
@@ -23,7 +28,7 @@ function AuthForm() {
           <input id="password" type="password" name="password" required />
         </p>
         <div className={classes.actions}>
-          <button onClick={switchAuthHandler} type="button">
+          <button type="button">
             {isLogin ? '회원가입하러 가기' : '로그인하러 가기'}
           </button>
           <button>✔️</button>

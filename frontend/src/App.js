@@ -63,7 +63,7 @@ const router = createBrowserRouter([
       {
         path: 'auth',
         element: <AuthenticationPage />,
-        action: newsletterAction,
+        // action: newsletterAction,
       },
     ],
   },
