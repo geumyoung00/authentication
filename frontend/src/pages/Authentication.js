@@ -5,7 +5,7 @@ function AuthenticationPage() {
 }
 
 export default AuthenticationPage;
-
+export const action = () => {};
 // 1. 서치파라미터가 login or signup 에 따라
 // 2. API 호출 주소를 바꿔준다.
 // 3-1. login -> http://localhost:8080/login
