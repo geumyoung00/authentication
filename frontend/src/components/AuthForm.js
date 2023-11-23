@@ -3,11 +3,15 @@ import { Form, Link, useSearchParams } from 'react-router-dom';
 import classes from './AuthForm.module.css';
 
 function AuthForm() {
+  // 1. 서치파라미터가 login or signup 에 따라
   const [loginPrams] = useSearchParams();
   const mode = loginPrams.get('mode');
 
+  // 2. API 호출 주소를 바꿔준다.
   const isLogin = mode === 'login';
 
+  // 3-1. login -> http://localhost:8080/login
+  // 3-2. signup -> http://localhost:8080/signup
   return (
     <>
       <Form method="post" className={classes.form}>
