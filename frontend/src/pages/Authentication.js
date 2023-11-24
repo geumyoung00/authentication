@@ -6,12 +6,27 @@ function AuthenticationPage() {
 }
 
 export default AuthenticationPage;
-export const action = ({ request }) => {
+export const action = async ({ request }) => {
   const searchParams = new URL(request.url).searchParams;
   console.log('searchParams__', searchParams);
 
-  const data = request.formData();
+  const data = await request.formData();
   console.log(data);
+
+  const response = await fetch('http://localhost:3000/login', {
+    method: 'PUT',
+    headers: { 'Context-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  console.log('response__', response);
+
+  if (response.status === 401 || 422) {
+    return;
+  }
+
+  if (!response.ok) {
+    return;
+  }
 
   return redirect('/');
 };
