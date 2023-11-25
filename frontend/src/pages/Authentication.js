@@ -11,21 +11,30 @@ export const action = async ({ request }) => {
   console.log('searchParams__', searchParams);
 
   const data = await request.formData();
-  console.log(data);
+  console.log('data__', data);
 
-  const response = await fetch('http://localhost:3000/login', {
-    method: 'PUT',
-    headers: { 'Context-Type': 'application/json' },
-    body: JSON.stringify(data),
+  const authData = {
+    email: data.get('email'),
+    password: data.get('password'),
+  };
+  console.log('authData__', authData);
+
+  const mode = searchParams.get('mode');
+  console.log('mode__', mode);
+
+  const response = await fetch(`http://localhost:8080/${mode}`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(authData),
   });
   console.log('response__', response);
 
-  if (response.status === 401 || 422) {
-    return;
+  if (response.status === 401 || response.status === 422) {
+    return response;
   }
 
   if (!response.ok) {
-    return;
+    throw new Error('not OK!');
   }
 
   return redirect('/');
