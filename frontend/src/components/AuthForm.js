@@ -1,4 +1,4 @@
-import { Form, Link, useSearchParams } from 'react-router-dom';
+import { Form, Link, useActionData, useSearchParams } from 'react-router-dom';
 
 import classes from './AuthForm.module.css';
 
@@ -12,10 +12,15 @@ function AuthForm() {
 
   // 3-1. login -> http://localhost:8080/login
   // 3-2. signup -> http://localhost:8080/signup
+
+  const authData = useActionData();
+  console.log('authData__', authData);
+
   return (
     <>
       <Form method="post" className={classes.form}>
         <h1>{isLogin ? '로그인' : '회원가입'}</h1>
+        {authData?.error ? null : <p>{authData.message}</p>}
         <p>
           <label htmlFor="email">이메일</label>
           <input id="email" type="email" name="email" required />
