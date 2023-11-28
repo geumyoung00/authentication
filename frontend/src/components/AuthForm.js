@@ -20,11 +20,9 @@ function AuthForm() {
   // 3-2. signup -> http://localhost:8080/signup
 
   const authData = useActionData();
-  console.log('authData__', authData);
 
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
-  console.log('isSubmitting__', isSubmitting);
 
   return (
     <>

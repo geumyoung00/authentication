@@ -17,10 +17,8 @@ export const action = async ({ request }) => {
     email: data.get('email'),
     password: data.get('password'),
   };
-  console.log('authData__', authData);
 
   const mode = searchParams.get('mode');
-  console.log('mode__', mode);
 
   const response = await fetch(`http://localhost:8080/${mode}`, {
     method: 'POST',
@@ -36,6 +34,10 @@ export const action = async ({ request }) => {
   if (!response.ok) {
     throw new Error('not OK!');
   }
+
+  //Token 저장해서 권한 설정하기.
+  const json = await response.json();
+  localStorage.setItem('token', json.token);
 
   return redirect('/');
 };
