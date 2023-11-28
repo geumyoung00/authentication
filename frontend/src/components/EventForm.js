@@ -100,11 +100,13 @@ export async function action({ request, params }) {
     const eventId = params.eventId;
     url = 'http://localhost:8080/events/' + eventId;
   }
+  const token = localStorage.getItem('token');
 
   const response = await fetch(url, {
     method: method,
     headers: {
       'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token,
     },
     body: JSON.stringify(eventData),
   });

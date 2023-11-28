@@ -77,9 +77,12 @@ export async function loader({ request, params }) {
 }
 
 export async function action({ params, request }) {
+  const token = localStorage.getItem('token');
+
   const eventId = params.eventId;
   const response = await fetch('http://localhost:8080/events/' + eventId, {
     method: request.method,
+    headers: { authorization: 'Bearer ' + token },
   });
 
   if (!response.ok) {
