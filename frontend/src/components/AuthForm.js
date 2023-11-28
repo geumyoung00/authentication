@@ -20,7 +20,7 @@ function AuthForm() {
     <>
       <Form method="post" className={classes.form}>
         <h1>{isLogin ? '로그인' : '회원가입'}</h1>
-        {authData?.error ? null : <p>{authData.message}</p>}
+        {authData?.errors ? <p>{authData.message}</p> : null}
         <p>
           <label htmlFor="email">이메일</label>
           <input id="email" type="email" name="email" required />
