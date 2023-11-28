@@ -1,4 +1,10 @@
-import { Form, Link, useActionData, useSearchParams } from 'react-router-dom';
+import {
+  Form,
+  Link,
+  useActionData,
+  useSearchParams,
+  useNavigation,
+} from 'react-router-dom';
 
 import classes from './AuthForm.module.css';
 
@@ -15,6 +21,10 @@ function AuthForm() {
 
   const authData = useActionData();
   console.log('authData__', authData);
+
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
+  console.log('isSubmitting__', isSubmitting);
 
   return (
     <>
@@ -33,7 +43,9 @@ function AuthForm() {
           <Link to={`/auth?mode=${isLogin ? 'signup' : 'login'}`}>
             {isLogin ? '회원가입하러 가기' : '로그인하러 가기'}
           </Link>
-          <button>✔️</button>
+          <button disabled={isSubmitting}>
+            {isSubmitting ? '제출 중' : '✔️'}
+          </button>
         </div>
       </Form>
     </>
