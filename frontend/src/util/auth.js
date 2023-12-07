@@ -12,5 +12,5 @@ export const checkToken = () => {
     return redirect('/auth?mode=login');
   }
 
-  return;
+  return null;
 };

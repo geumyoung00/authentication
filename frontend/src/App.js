@@ -17,13 +17,15 @@ import AuthenticationPage, {
   action as authAction,
 } from './pages/Authentication';
 import { action as logoutAction } from './pages/Logout';
-import { checkToken } from './util/auth';
+import { checkToken, getToken } from './util/auth';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
     errorElement: <ErrorPage />,
+    id: 'root',
+    loader: () => getToken,
     children: [
       { index: true, element: <HomePage /> },
       {
@@ -70,6 +72,8 @@ const router = createBrowserRouter([
         path: 'auth',
         element: <AuthenticationPage />,
         action: authAction,
+        loader: getToken,
+        id: 'auth',
       },
       {
         path: 'logout',
