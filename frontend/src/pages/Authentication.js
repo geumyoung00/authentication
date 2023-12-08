@@ -8,10 +8,7 @@ function AuthenticationPage() {
 export default AuthenticationPage;
 export const action = async ({ request }) => {
   const searchParams = new URL(request.url).searchParams;
-  console.log('searchParams__', searchParams);
-
   const data = await request.formData();
-  console.log('data__', data);
 
   const authData = {
     email: data.get('email'),
@@ -25,7 +22,6 @@ export const action = async ({ request }) => {
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify(authData),
   });
-  console.log('response__', response);
 
   if (response.status === 401 || response.status === 422) {
     return response;

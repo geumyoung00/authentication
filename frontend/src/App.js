@@ -25,7 +25,7 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     id: 'root',
-    loader: () => getToken,
+    loader: getToken,
     children: [
       { index: true, element: <HomePage /> },
       {
@@ -73,7 +73,6 @@ const router = createBrowserRouter([
         element: <AuthenticationPage />,
         action: authAction,
         loader: getToken,
-        id: 'auth',
       },
       {
         path: 'logout',
