@@ -1,4 +1,5 @@
 import { Link, useSubmit } from 'react-router-dom';
+import { getToken } from '../util/auth';
 
 import classes from './EventItem.module.css';
 
@@ -12,6 +13,7 @@ function EventItem({ event }) {
       submit(null, { method: 'delete' });
     }
   }
+  const token = getToken();
 
   return (
     <article className={classes.event}>
@@ -20,8 +22,12 @@ function EventItem({ event }) {
       <time>{event.date}</time>
       <p>{event.description}</p>
       <menu className={classes.actions}>
-        <Link to="edit">수정</Link>
-        <button onClick={startDeleteHandler}>삭제</button>
+        {token ? (
+          <>
+            <Link to="edit">수정</Link>
+            <button onClick={startDeleteHandler}>삭제</button>
+          </>
+        ) : null}
       </menu>
     </article>
   );
